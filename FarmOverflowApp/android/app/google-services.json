@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69517856071",
+    "project_id": "msc-em",
+    "storage_bucket": "msc-em.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69517856071:android:ed803e63cbc28a94ead062",
+        "android_client_info": {
+          "package_name": "com.farmoverflowapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69517856071-g7mtmv07up95qlgfo5ut0ubjum73na7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvwGiJbXl6OZHlpzcdXL-lj1YVDokbeuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69517856071-g7mtmv07up95qlgfo5ut0ubjum73na7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
