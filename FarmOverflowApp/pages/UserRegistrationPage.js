@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, ScrollView, View, Button, TextInput, StyleSheet} from 'react-native'
+import {SafeAreaView, ScrollView, View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native'
 
 const styles = require('../styles');
 
@@ -21,35 +21,41 @@ const UserRegistrationPage = ({route, navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={formStyles.container}>
+        <View style={styles.SectionStyle}>
           <TextInput
             style={formStyles.input}
             placeholder='Username'
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='#8b9cb5'
             onChangeText={val => this.state.username=val}
           />
+        </View>
+        <View style={styles.SectionStyle}>
           <TextInput
             style={formStyles.input}
             placeholder='Password'
             secureTextEntry={true}
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='#8b9cb5'
             onChangeText={val => this.state.password=val}
           />
+        </View>
+        <View style={styles.SectionStyle}>
           <TextInput
             style={formStyles.input}
             placeholder='Re-type Password'
             secureTextEntry={true}
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='#8b9cb5'
             onChangeText={val => this.state.retype_password=val}
           />
-          <Button
-            title='Sign Up'
-            onPress={this.signUp}
-          />
         </View>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          activeOpacity={0.5}
+          onPress={this.signUp}>
+          <Text style={styles.buttonTextStyle}>REGISTER</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -59,20 +65,12 @@ export default UserRegistrationPage;
 
 const formStyles = StyleSheet.create({
   input: {
-    color: 'white',
-    borderRadius: 14,
-    fontSize: 14,
-    width: '90%',
-    height: 44,
-    margin: 10,
-    padding: 8,
-    marginVertical: 10,
-    backgroundColor: '#42A5F5',
-  },
-  container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  }
+    color: 'black',
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor: '#dadae8',
+  },
 })
