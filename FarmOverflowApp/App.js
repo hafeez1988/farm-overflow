@@ -5,20 +5,25 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import HomePage from './pages/HomePage';
-import GreetingPage from './pages/GreetingPage';
+import MainPage from './pages/MainPage';
+import UserRegistrationPage from './pages/UserRegistrationPage';
+import AskQuestionsPage from './pages/AskQuestionsPage';
+import PostAnswerPage from './pages/PostAnswerPage';
+import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
 
+const styles = require('./styles');
 const Stack = createStackNavigator();
+const Title = 'FARM Overflow';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomePage">
+      <Stack.Navigator initialRouteName="MainPage">
         <Stack.Screen
-          name="HomePage"
-          component={HomePage}
+          name="MainPage"
+          component={MainPage}
           options={{
-            title: 'MS21911576',
+            title: Title,
             headerStyle: {
               backgroundColor: '#008080',
             },
@@ -26,10 +31,43 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="GreetingPage"
-          component={GreetingPage}
+          name="UserRegistrationPage"
+          component={UserRegistrationPage}
           options={{
-            title: 'Greeting',
+            title: Title,
+            headerStyle: {
+              backgroundColor: '#008080',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="AskQuestionsPage"
+          component={AskQuestionsPage}
+          options={{
+            title: Title,
+            headerStyle: {
+              backgroundColor: '#008080',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="PostAnswerPage"
+          component={PostAnswerPage}
+          options={{
+            title: Title,
+            headerStyle: {
+              backgroundColor: '#008080',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="ExploreQuestionsPage"
+          component={ExploreQuestionsPage}
+          options={{
+            title: Title,
             headerStyle: {
               backgroundColor: '#008080',
             },
