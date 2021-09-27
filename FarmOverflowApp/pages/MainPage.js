@@ -7,7 +7,7 @@ const MainPage = ({route, navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        	<TouchableHighlight style={styles.button}>
+        	<TouchableHighlight style={styles.buttonStyle}>
             <Button
               title="Ask a question"
               onPress={() =>
@@ -15,7 +15,7 @@ const MainPage = ({route, navigation}) => {
               }
             />
           </TouchableHighlight>
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight style={styles.buttonStyle}>
             <Button
               title="Post an answer"
               onPress={() =>
@@ -23,14 +23,22 @@ const MainPage = ({route, navigation}) => {
               }
             />
           </TouchableHighlight>
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight style={styles.buttonStyle}>
             <Button
               title="Explore"
               onPress={() =>
                 navigation.navigate('ExploreQuestionsPage')
               }
             />
-          </TouchableHighlight>          
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.buttonStyle}>
+            <Button
+              title="Signup"
+              onPress={() =>
+                navigation.navigate('UserRegistrationPage')
+              }
+            />
+          </TouchableHighlight>
       </ScrollView>
     </SafeAreaView>
   );

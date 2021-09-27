@@ -5,6 +5,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import HomePage from './pages/HomePage';
 import MainPage from './pages/MainPage';
 import UserRegistrationPage from './pages/UserRegistrationPage';
 import AskQuestionsPage from './pages/AskQuestionsPage';
@@ -18,7 +19,17 @@ const Title = 'FARM Overflow';
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainPage">
+      <Stack.Navigator initialRouteName="HomePage">
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{
+            title: null,
+            headerStyle: {
+              backgroundColor: '#008080',
+            },
+          }}
+        />
         <Stack.Screen
           name="MainPage"
           component={MainPage}
