@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Text, Button} from 'react-native';
 
-const styles = require('../styles');
+const styles = require('../resources/styles');
 
 const PostAnswerPage = ({route, navigation}) => {
   return (

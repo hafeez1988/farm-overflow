@@ -12,7 +12,6 @@ import AskQuestionsPage from './pages/AskQuestionsPage';
 import PostAnswerPage from './pages/PostAnswerPage';
 import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
 
-const styles = require('./styles');
 const Stack = createStackNavigator();
 const Title = 'FARM Overflow';
 

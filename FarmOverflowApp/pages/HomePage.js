@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Loader from './common/Loader';
 
-const styles = require('../styles');
+const styles = require('../resources/styles');
 
 const HomePage = ({navigation}) => {
   const [userName, setUserName] = useState('');

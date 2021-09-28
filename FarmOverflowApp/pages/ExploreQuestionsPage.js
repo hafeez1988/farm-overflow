@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
 
-const styles = require('../styles');
+const styles = require('../resources/styles');
 
 const ExploreQuestionsPage = ({route, navigation}) => {
   return (

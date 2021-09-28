@@ -1,6 +1,8 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, View, Text, Button} from 'react-native';
 
+const styles = require('../resources/styles');
+
 const GreetingPage = ({route, navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>

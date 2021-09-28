@@ -1,7 +1,7 @@
 import React from 'react'
 import {SafeAreaView, ScrollView, View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native'
 
-const styles = require('../styles');
+const styles = require('../resources/styles');
 
 const UserRegistrationPage = ({route, navigation}) => {
 

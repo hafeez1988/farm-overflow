@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Button, TouchableHighlight} from 'react-native';
 
-const styles = require('../styles');
+const styles = require('../resources/styles');
 
 const MainPage = ({route, navigation}) => {
   return (
