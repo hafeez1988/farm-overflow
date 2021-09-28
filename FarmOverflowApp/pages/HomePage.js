@@ -76,15 +76,15 @@ const HomePage = ({navigation}) => {
             <KeyboardAvoidingView enabled>
               <View style={{alignItems: 'center'}}>
                 <Image
-                  source={require('../resources/FO_logo.png')}
+                  source={require('../resources/farmoverflow_logo_white.png')}
                   style={{
-                    width: '50%',
-                    height: 100,
-                    resizeMode: 'contain',
-                    margin: 30,
+                    width: '120%',
+                    height: 50,
+                    resizeMode: 'cover',
                   }}
                 />
               </View>
+              <View style={{height: 100}}/>
               {errortext != '' ? (
                 <Text style={styles.errorTextStyle}> {errortext} </Text>
               ) : null}

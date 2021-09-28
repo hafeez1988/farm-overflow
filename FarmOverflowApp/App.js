@@ -16,7 +16,6 @@ import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
 
 const Stack = createStackNavigator();
 const Title = 'FARM Overflow';
-const HomeTitle = 'SLIIT - MS21911576';
 
 const App = () => {
   //addNewQuestion(null, null);

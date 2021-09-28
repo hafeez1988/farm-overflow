@@ -70,6 +70,6 @@ module.exports = StyleSheet.create({
     errorTextStyle: {
         color: 'red',
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: 12,
     },
 });
