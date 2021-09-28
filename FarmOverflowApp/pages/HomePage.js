@@ -1,5 +1,5 @@
 import React, {useState, createRef} from 'react';
-import {TextInput, View, Text, ScrollView, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {TextInput, View, Text, ScrollView, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView, ImageBackground} from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -69,68 +69,70 @@ const HomePage = ({navigation}) => {
 
   return (
     <View style={styles.mainBody}>
-      <Loader loading={loading} />
-      <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
-        <View>
-          <KeyboardAvoidingView enabled>
-            <View style={{alignItems: 'center'}}>
-              <Image
-                source={require('../resources/FO_logo.png')}
-                style={{
-                  width: '50%',
-                  height: 100,
-                  resizeMode: 'contain',
-                  margin: 30,
-                }}
-              />
-            </View>
-            <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={(UserName) => setUserName(UserName)}
-                placeholder="Enter User Name"
-                placeholderTextColor="#8b9cb5"
-                autoCapitalize="none"
-                returnKeyType="next"
-                onSubmitEditing={() =>
-                  passwordInputRef.current && passwordInputRef.current.focus()
-                }
-                underlineColorAndroid="#f000"
-                blurOnSubmit={false}
-              />
-            </View>
-            <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={(UserPassword) => setUserPassword(UserPassword)}
-                placeholder="Enter Password"
-                placeholderTextColor="#8b9cb5"
-                keyboardType="default"
-                ref={passwordInputRef}
-                onSubmitEditing={Keyboard.dismiss}
-                blurOnSubmit={false}
-                secureTextEntry={true}
-                underlineColorAndroid="#f000"
-                returnKeyType="next"
-              />
-            </View>
-            {errortext != '' ? (
-              <Text style={styles.errorTextStyle}> {errortext} </Text>
-            ) : null}
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              activeOpacity={0.5}
-              onPress={handleSubmitPress}>
-              <Text style={styles.buttonTextStyle}>LOGIN</Text>
-            </TouchableOpacity>
-            <Text
-              style={styles.registerTextStyle}
-              onPress={() => navigation.navigate('UserRegistrationPage')}>
-              Don't have an account? SIGN UP
-            </Text>
-          </KeyboardAvoidingView>
-        </View>
-      </ScrollView>
+      <ImageBackground source={require('../resources/agritec_wallpaper.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
+        <Loader loading={loading} />
+        <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
+          <View>
+            <KeyboardAvoidingView enabled>
+              <View style={{alignItems: 'center'}}>
+                <Image
+                  source={require('../resources/FO_logo.png')}
+                  style={{
+                    width: '50%',
+                    height: 100,
+                    resizeMode: 'contain',
+                    margin: 30,
+                  }}
+                />
+              </View>
+              {errortext != '' ? (
+                <Text style={styles.errorTextStyle}> {errortext} </Text>
+              ) : null}
+              <View style={styles.SectionStyle}>
+                <TextInput
+                  style={styles.inputStyle}
+                  onChangeText={(UserName) => setUserName(UserName)}
+                  placeholder="Enter User Name"
+                  placeholderTextColor="#8b9cb5"
+                  autoCapitalize="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() =>
+                    passwordInputRef.current && passwordInputRef.current.focus()
+                  }
+                  underlineColorAndroid="#f000"
+                  blurOnSubmit={false}
+                />
+              </View>
+              <View style={styles.SectionStyle}>
+                <TextInput
+                  style={styles.inputStyle}
+                  onChangeText={(UserPassword) => setUserPassword(UserPassword)}
+                  placeholder="Enter Password"
+                  placeholderTextColor="#8b9cb5"
+                  keyboardType="default"
+                  ref={passwordInputRef}
+                  onSubmitEditing={Keyboard.dismiss}
+                  blurOnSubmit={false}
+                  secureTextEntry={true}
+                  underlineColorAndroid="#f000"
+                  returnKeyType="next"
+                />
+              </View>
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                activeOpacity={0.5}
+                onPress={handleSubmitPress}>
+                <Text style={styles.buttonTextStyle}>LOGIN</Text>
+              </TouchableOpacity>
+              <Text
+                style={styles.registerTextStyle}
+                onPress={() => navigation.navigate('UserRegistrationPage')}>
+                Don't have an account? SIGN UP
+              </Text>
+            </KeyboardAvoidingView>
+          </View>
+        </ScrollView>
+      </ImageBackground>
     </View>
   );
 };

@@ -19,12 +19,13 @@ module.exports = StyleSheet.create({
     },
     inputStyle: {
         flex: 1,
-        color: 'white',
+        color: 'black',
         paddingLeft: 15,
         paddingRight: 15,
         borderWidth: 1,
         borderRadius: 30,
         borderColor: '#dadae8',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)'
     },
     mainBody: {
         flex: 1,
