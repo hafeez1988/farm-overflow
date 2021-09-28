@@ -12,11 +12,14 @@ import AskQuestionsPage from './pages/AskQuestionsPage';
 import PostAnswerPage from './pages/PostAnswerPage';
 import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
 
-const styles = require('./styles');
+//import {addNewQuestion} from './firebase/FarmOverflowApi';
+
 const Stack = createStackNavigator();
 const Title = 'FARM Overflow';
+const HomeTitle = 'SLIIT - MS21911576';
 
 const App = () => {
+  //addNewQuestion(null, null);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomePage">
@@ -24,10 +27,7 @@ const App = () => {
           name="HomePage"
           component={HomePage}
           options={{
-            title: null,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
+            headerShown: false
           }}
         />
         <Stack.Screen
