@@ -37,3 +37,14 @@ export function createUser(email, password, addCompleteFunc, errorFunc) {
         errorFunc(error);
     });
 }
+
+export function login(email, password, loginFunc, errorFunc) {
+    auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+        loginFunc();
+    })
+    .catch(error => {
+        console.log(error.message);
+        errorFunc();
+    });
+}

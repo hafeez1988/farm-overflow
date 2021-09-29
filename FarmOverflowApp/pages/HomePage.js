@@ -1,14 +1,12 @@
 import React, {useState, createRef} from 'react';
 import {TextInput, View, Text, ScrollView, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView, ImageBackground} from 'react-native';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import Loader from './common/Loader';
+import {login} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
 const HomePage = ({navigation}) => {
-  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
@@ -18,53 +16,31 @@ const HomePage = ({navigation}) => {
   const handleSubmitPress = () => {
     setErrortext('');
 
-    if (!userName) {
-      alert('Please fill User Name');
+    if (!email) {
+      alert('Enter your email');
       return;
     }
     if (!userPassword) {
-      alert('Please fill Password');
+      alert('Enter your password');
       return;
     }
 
     setLoading(true);
 
-    let dataToSend = {username: userName, user_password: userPassword};
-    let formBody = [];
-
-    for (let key in dataToSend) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
+    try {
+      const loginFunc = () => {
+        navigation.navigate('MainPage', {paramKey: email})
+      }
+      const errorFunc = () => {
+        setLoading(false);
+        setErrortext('Invalid email or password');
+      }
+      login(email, userPassword, loginFunc, errorFunc);
+    } catch (err) {
+      setLoading(false);
+      console.log('Error login-in: ', err)
+      alert('Error occured!');
     }
-
-    formBody = formBody.join('&');
-
-    fetch('https://aboutreact.herokuapp.com/login.php', {
-      method: 'POST',
-      body: formBody,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setLoading(false);
-        console.log(responseJson);
-
-        if (responseJson.status == 1) {
-          AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-          console.log(responseJson.data[0].user_id);
-          navigation.replace('DrawerNavigationRoutes');
-        } else {
-          setErrortext('Please check your username or password');
-          console.log('Please check your username or password');
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error(error);
-      });
   };
 
   return (
@@ -91,8 +67,8 @@ const HomePage = ({navigation}) => {
               <View style={styles.SectionStyle}>
                 <TextInput
                   style={styles.inputStyle}
-                  onChangeText={(UserName) => setUserName(UserName)}
-                  placeholder="Enter User Name"
+                  onChangeText={(Email) => setEmail(Email)}
+                  placeholder="Enter Email"
                   placeholderTextColor="#8b9cb5"
                   autoCapitalize="none"
                   returnKeyType="next"
