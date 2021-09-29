@@ -13,7 +13,7 @@ const AskQuestionsPage = ({route, navigation}) => {
     question: null
   }
   
-  const addComplete = () => {
+  const addCompleteFunc = () => {
     console.log('This is inside the caller function');
   }
 
@@ -24,7 +24,7 @@ const AskQuestionsPage = ({route, navigation}) => {
     }
 
     setLoading(true);
-    addNewQuestion(farmQuestion, addComplete);
+    addNewQuestion(farmQuestion, addCompleteFunc);
     setLoading(false);
   }
 
