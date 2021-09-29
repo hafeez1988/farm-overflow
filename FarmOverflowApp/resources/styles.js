@@ -6,7 +6,6 @@ module.exports = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#CCFFE5',
     },
     scrollView: {
         marginHorizontal: 20,
@@ -71,5 +70,13 @@ module.exports = StyleSheet.create({
         color: 'red',
         textAlign: 'center',
         fontSize: 12,
+    },
+    textArea: {
+        height: '70%', 
+        borderColor: 'gray', 
+        borderWidth: 1,
+        padding: 15,
+        borderRadius: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)'
     },
 });

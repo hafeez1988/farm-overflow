@@ -12,32 +12,27 @@ import AskQuestionsPage from './pages/AskQuestionsPage';
 import PostAnswerPage from './pages/PostAnswerPage';
 import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
 
-//import {addNewQuestion} from './firebase/FarmOverflowApi';
-
 const Stack = createStackNavigator();
 const Title = 'FARM Overflow';
+const TitleColor = '#fff';
+const TitleContainerColor = '#32B232';
 
 const App = () => {
-  //addNewQuestion(null, null);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomePage">
         <Stack.Screen
           name="HomePage"
           component={HomePage}
-          options={{
-            headerShown: false
-          }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="MainPage"
           component={MainPage}
           options={{
             title: Title,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: TitleContainerColor},
+            headerTintColor: TitleColor,
           }}
         />
         <Stack.Screen
@@ -45,10 +40,8 @@ const App = () => {
           component={UserRegistrationPage}
           options={{
             title: Title,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: TitleContainerColor},
+            headerTintColor: TitleColor,
           }}
         />
         <Stack.Screen
@@ -56,10 +49,8 @@ const App = () => {
           component={AskQuestionsPage}
           options={{
             title: Title,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: TitleContainerColor},
+            headerTintColor: TitleColor,
           }}
         />
         <Stack.Screen
@@ -67,10 +58,8 @@ const App = () => {
           component={PostAnswerPage}
           options={{
             title: Title,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: TitleContainerColor},
+            headerTintColor: TitleColor,
           }}
         />
         <Stack.Screen
@@ -78,10 +67,8 @@ const App = () => {
           component={ExploreQuestionsPage}
           options={{
             title: Title,
-            headerStyle: {
-              backgroundColor: '#008080',
-            },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: TitleContainerColor},
+            headerTintColor: TitleColor,
           }}
         />
       </Stack.Navigator>
