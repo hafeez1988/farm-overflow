@@ -1,46 +1,37 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Button, TouchableHighlight} from 'react-native';
+import {SafeAreaView, ScrollView, TouchableOpacity, ImageBackground, Text} from 'react-native';
 
 const styles = require('../resources/styles');
 
 const MainPage = ({route, navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        	<TouchableHighlight style={styles.buttonStyle}>
-            <Button
-              title="Ask a question"
-              onPress={() =>
-                navigation.navigate('AskQuestionsPage')
-              }
-            />
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.buttonStyle}>
-            <Button
-              title="Post an answer"
-              onPress={() =>
-                navigation.navigate('PostAnswerPage')
-              }
-            />
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.buttonStyle}>
-            <Button
-              title="Explore"
-              onPress={() =>
-                navigation.navigate('ExploreQuestionsPage')
-              }
-            />
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.buttonStyle}>
-            <Button
-              title="Signup"
-              onPress={() =>
-                navigation.navigate('UserRegistrationPage')
-              }
-            />
-          </TouchableHighlight>
-      </ScrollView>
-    </SafeAreaView>
+    <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
+      <SafeAreaView style={styles.container}>
+        {route && route.params ? (
+          <Text> Signed in as user: {route.params.paramKey} </Text>
+        ) : null}
+        <ScrollView style={styles.scrollView}>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate('AskQuestionsPage')}>
+            <Text style={styles.buttonTextStyle}>ASK A QUESTION</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate('PostAnswerPage')}>
+            <Text style={styles.buttonTextStyle}>POST ANSWERS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate('ExploreQuestionsPage')}>
+            <Text style={styles.buttonTextStyle}>EXPLORE</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
