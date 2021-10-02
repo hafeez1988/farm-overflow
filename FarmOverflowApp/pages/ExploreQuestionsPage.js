@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator, Text } from 'react-native';
-import { ListItem, SearchBar } from 'react-native-elements';
+import { View, FlatList, ActivityIndicator } from 'react-native';
+import { ListItem, Avatar, SearchBar } from 'react-native-elements';
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -87,7 +87,7 @@ class ExploreQuestionsPage extends Component {
     if (this.state.loading) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator />
+          <ActivityIndicator size="large" color="#00ff00" />
         </View>
       );
     }
@@ -96,12 +96,13 @@ class ExploreQuestionsPage extends Component {
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
-            <ListItem
-              leftAvatar={{ source: { uri: item.picture.thumbnail } }}
-              title={`${item.name.first} ${item.name.last}`}
-              subtitle={item.email}
-            />
-            /*<Text>{item.name.first}</Text>*/
+            <ListItem key={item.name.first}>
+              <Avatar source={{ source: { uri: item.picture.thumbnail } }} />
+              <ListItem.Content>
+                <ListItem.Title>{`${item.name.first} ${item.name.last}`}</ListItem.Title>
+                <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
+              </ListItem.Content>
+            </ListItem>
           )}
           keyExtractor={item => item.email}
           ItemSeparatorComponent={this.renderSeparator}
