@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, View} from 'react-native';
 import Loader from './common/Loader';
 import {addNewQuestion} from '../firebase/FarmOverflowApi';
+import {getUser} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
@@ -12,7 +13,7 @@ const AskQuestionsPage = ({route, navigation}) => {
     user: 'Tester',
     question: null
   }
-  
+
   const addCompleteFunc = () => {
     console.log('This is inside the caller function');
   }
@@ -32,6 +33,7 @@ const AskQuestionsPage = ({route, navigation}) => {
     <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
+        <Text style={styles.signedUserTextStyle}> Signed in as user: {getUser(route)} </Text>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
           Ask your question here
         </Text>
@@ -43,7 +45,7 @@ const AskQuestionsPage = ({route, navigation}) => {
             placeholderTextColor="grey"
             numberOfLines={10}
             multiline={true}
-            onChangeText={text => farmQuestion.question = text}
+            onChangeText={val => farmQuestion.question = val}
           />
           <TouchableOpacity
             style={styles.buttonStyle}

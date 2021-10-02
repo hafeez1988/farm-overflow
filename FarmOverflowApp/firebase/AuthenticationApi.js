@@ -48,3 +48,7 @@ export function login(email, password, loginFunc, errorFunc) {
         errorFunc();
     });
 }
+
+export function getUser(route) {
+    return (route && route.params) ? route.params.paramKey : '';
+}

@@ -79,4 +79,9 @@ module.exports = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.8)'
     },
+    signedUserTextStyle: {
+        textAlign: 'right',
+        fontSize: 10,
+        width: '100%',
+    },
 });
