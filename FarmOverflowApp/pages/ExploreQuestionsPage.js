@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 import { ListItem, Avatar, SearchBar } from 'react-native-elements';
+import firestore from '@react-native-firebase/firestore';
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -16,30 +17,22 @@ class ExploreQuestionsPage extends Component {
   }
 
   componentDidMount() {
-    this.makeRemoteRequest();
-  }
+    firestore().collection('farmoverflow').onSnapshot(querySnapshot => {
+      const questions = [];
+      let number = 0;
 
-  makeRemoteRequest = () => {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>')
-    const url = `https://randomuser.me/api/?&results=20`;
-    this.setState({ loading: true });
-
-    fetch(url)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res.results,
-          error: res.error || null,
-          loading: false,
+      querySnapshot.forEach(documentSnapshot => {
+        questions.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+          index: ++number,
         });
-        this.arrayholder = res.results;
-
-        console.log("**** " + this.state.data)
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
       });
-  };
+
+      this.setState({data: questions});
+      this.arrayholder=questions;
+    });
+  }
 
   renderSeparator = () => {
     return (
@@ -60,7 +53,7 @@ class ExploreQuestionsPage extends Component {
     });
 
     const newData = this.arrayholder.filter(item => {
-      const itemData = `${item.name.title.toUpperCase()} ${item.name.first.toUpperCase()} ${item.name.last.toUpperCase()}`;
+      const itemData = `${item.question.toUpperCase()} ${item.question.toUpperCase()} ${item.question.toUpperCase()}`;
       const textData = text.toUpperCase();
 
       return itemData.indexOf(textData) > -1;
@@ -96,15 +89,14 @@ class ExploreQuestionsPage extends Component {
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
-            <ListItem key={item.name.first}>
-              <Avatar source={{ source: { uri: item.picture.thumbnail } }} />
+            <ListItem key={item.key}>
               <ListItem.Content>
-                <ListItem.Title>{`${item.name.first} ${item.name.last}`}</ListItem.Title>
-                <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
+                <ListItem.Title>{`(${item.index}) ${item.question}`}</ListItem.Title>
+                <ListItem.Subtitle>{item.createdBy}</ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>
           )}
-          keyExtractor={item => item.email}
+          keyExtractor={item => item.key}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
         />
