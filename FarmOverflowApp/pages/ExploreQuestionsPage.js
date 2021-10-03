@@ -34,19 +34,15 @@ class ExploreQuestionsPage extends Component {
   };
 
   searchFilterFunction = text => {
-    this.setState({
-      value: text,
-    });
+    this.setState({value: text});
 
     const newData = this.arrayholder.filter(item => {
       const itemData = `${item.question.toUpperCase()} ${item.question.toUpperCase()} ${item.question.toUpperCase()}`;
       const textData = text.toUpperCase();
-
       return itemData.indexOf(textData) > -1;
     });
-    this.setState({
-      data: newData,
-    });
+
+    this.setState({data: newData});
   };
 
   renderHeader = () => {
@@ -78,7 +74,7 @@ class ExploreQuestionsPage extends Component {
             <ListItem key={item.key}>
               <ListItem.Content>
                 <ListItem.Title>{`(${item.index}) ${item.question}`}</ListItem.Title>
-                <ListItem.Subtitle>{item.createdBy}</ListItem.Subtitle>
+                <ListItem.Subtitle>{`Created by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>
           )}

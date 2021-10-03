@@ -18,7 +18,7 @@ export async function addNewQuestion(farmQuestion, addCompleteFunc) {
 
 export async function getAllQuestions(obj) {
     console.log('Retrieving all farming questions');
-    firestore().collection(collectionName).onSnapshot(querySnapshot => {
+    firestore().collection(collectionName).orderBy("createdAt", "desc").onSnapshot(querySnapshot => {
         const questions = [];
         let number = 0;
 
