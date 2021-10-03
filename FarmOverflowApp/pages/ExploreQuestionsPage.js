@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator } from 'react-native';
+import { View, FlatList, ActivityIndicator, LayoutAnimation, Text } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import {getAllQuestions} from '../firebase/FarmOverflowApi';
 
@@ -10,6 +10,7 @@ class ExploreQuestionsPage extends Component {
     this.state = {
       loading: false,
       data: [],
+      expanded: false,
       error: null,
     };
 
@@ -19,19 +20,6 @@ class ExploreQuestionsPage extends Component {
   componentDidMount() {
     getAllQuestions(this);
   }
-
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: '86%',
-          backgroundColor: '#CED0CE',
-          marginLeft: '14%',
-        }}
-      />
-    );
-  };
 
   searchFilterFunction = text => {
     this.setState({value: text});
@@ -43,6 +31,17 @@ class ExploreQuestionsPage extends Component {
     });
 
     this.setState({data: newData});
+  };
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          backgroundColor: '#CED0CE',
+        }}
+      />
+    );
   };
 
   renderHeader = () => {
@@ -58,6 +57,35 @@ class ExploreQuestionsPage extends Component {
     );
   };
 
+  renderItem = ({item}) => (
+    <View>
+      <ListItem key={item.key} onPress={() => this.onChangeLayout(item.key)}            >
+        <ListItem.Content>
+          <ListItem.Title>{`(${item.index}) ${item.question}`}</ListItem.Title>
+          <ListItem.Subtitle>{`Asked by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
+        </ListItem.Content>
+      </ListItem>
+      <View
+        style={{
+          height: (this.state.expanded === item.key) ? null : 0,
+          overflow: 'hidden',
+        }}>
+        {item.answers.map((value, index) => {
+          return (
+            <Text key={index} style={{fontSize: 11, paddingBottom: 5, paddingTop: 5, paddingLeft: 20, color: '#34282C'}}>
+              [Answer {index+1}]:{"\n"}{value}{"\n"}
+            </Text>
+          );
+        })}
+      </View>
+    </View>
+  )
+
+  onChangeLayout = (farmQuestionId) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    this.setState({ expanded: farmQuestionId });
+  };
+
   render() {
     if (this.state.loading) {
       return (
@@ -70,14 +98,7 @@ class ExploreQuestionsPage extends Component {
       <View style={{ flex: 1 }}>
         <FlatList
           data={this.state.data}
-          renderItem={({ item }) => (
-            <ListItem key={item.key}>
-              <ListItem.Content>
-                <ListItem.Title>{`(${item.index}) ${item.question}`}</ListItem.Title>
-                <ListItem.Subtitle>{`Created by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
-              </ListItem.Content>
-            </ListItem>
-          )}
+          renderItem={this.renderItem}
           keyExtractor={item => item.key}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
