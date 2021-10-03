@@ -16,6 +16,25 @@ export async function addNewQuestion(farmQuestion, addCompleteFunc) {
     });
 }
 
+export async function getAllQuestions(obj) {
+    console.log('Retrieving all farming questions');
+    firestore().collection(collectionName).onSnapshot(querySnapshot => {
+        const questions = [];
+        let number = 0;
+
+        querySnapshot.forEach(documentSnapshot => {
+            questions.push({
+                ...documentSnapshot.data(),
+                key: documentSnapshot.id,
+                index: ++number,
+            });
+        });
+
+        obj.setState({data: questions});
+        obj.arrayholder=questions;
+    });
+}
+
 // Updating data
     /*
     firestore()
@@ -37,12 +56,6 @@ export async function addNewQuestion(farmQuestion, addCompleteFunc) {
     farmQuestionCollection.forEach(documentSnapshot => {
         console.log(documentSnapshot);
     });
-    */
-
-
-    // Insert data
-    /*
-    
     */
 
     // Delete data

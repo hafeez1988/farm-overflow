@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
-import { ListItem, Avatar, SearchBar } from 'react-native-elements';
-import firestore from '@react-native-firebase/firestore';
+import { ListItem, SearchBar } from 'react-native-elements';
+import {getAllQuestions} from '../firebase/FarmOverflowApi';
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -17,21 +17,7 @@ class ExploreQuestionsPage extends Component {
   }
 
   componentDidMount() {
-    firestore().collection('farmoverflow').onSnapshot(querySnapshot => {
-      const questions = [];
-      let number = 0;
-
-      querySnapshot.forEach(documentSnapshot => {
-        questions.push({
-          ...documentSnapshot.data(),
-          key: documentSnapshot.id,
-          index: ++number,
-        });
-      });
-
-      this.setState({data: questions});
-      this.arrayholder=questions;
-    });
+    getAllQuestions(this);
   }
 
   renderSeparator = () => {
