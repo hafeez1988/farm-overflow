@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, View, TouchableOpacity, Text, TextInput, StyleSheet, ImageBackground} from 'react-native';
+import {SafeAreaView, ScrollView, View, TouchableOpacity, Text, TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import Loader from './common/Loader';
 import {createUser} from '../firebase/AuthenticationApi';
 
@@ -58,9 +58,11 @@ const UserRegistrationPage = ({route, navigation}) => {
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
+          <View style={{height: 50}}/>
           <View style={styles.SectionStyle}>
+            <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
             <TextInput
-              style={formStyles.input}
+              style={styles.inputStyle}
               placeholder='Email'
               autoCapitalize="none"
               placeholderTextColor='#8b9cb5'
@@ -68,8 +70,9 @@ const UserRegistrationPage = ({route, navigation}) => {
             />
           </View>
           <View style={styles.SectionStyle}>
+            <Image source={require('../resources/icon_password.png')} style={styles.IconImageStyle} />
             <TextInput
-              style={formStyles.input}
+              style={styles.inputStyle}
               placeholder='Password'
               secureTextEntry={true}
               autoCapitalize="none"
@@ -78,8 +81,9 @@ const UserRegistrationPage = ({route, navigation}) => {
             />
           </View>
           <View style={styles.SectionStyle}>
+            <Image source={require('../resources/icon_password2.png')} style={styles.IconImageStyle} />
             <TextInput
-              style={formStyles.input}
+              style={styles.inputStyle}
               placeholder='Re-type Password'
               secureTextEntry={true}
               autoCapitalize="none"
@@ -100,16 +104,3 @@ const UserRegistrationPage = ({route, navigation}) => {
 };
 
 export default UserRegistrationPage;
-
-const formStyles = StyleSheet.create({
-  input: {
-    flex: 1,
-    color: 'black',
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderWidth: 1,
-    borderRadius: 30,
-    borderColor: '#dadae8',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)'
-  },
-})

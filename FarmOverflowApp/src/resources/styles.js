@@ -21,10 +21,9 @@ module.exports = StyleSheet.create({
         color: 'black',
         paddingLeft: 15,
         paddingRight: 15,
-        borderWidth: 1,
         borderRadius: 30,
-        borderColor: '#dadae8',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
     },
     mainBody: {
         flex: 1,
@@ -39,6 +38,8 @@ module.exports = StyleSheet.create({
         marginLeft: 35,
         marginRight: 35,
         margin: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        borderRadius: 30,
     },
     buttonStyle: {
         backgroundColor: '#7DE24E',
@@ -105,5 +106,13 @@ module.exports = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    },
+    IconImageStyle: {
+        padding: 10,
+        margin: 5,
+        height: 25,
+        width: 25,
+        resizeMode : 'stretch',
+        alignItems: 'center'
     },
 });

@@ -60,11 +60,12 @@ const HomePage = ({navigation}) => {
                   }}
                 />
               </View>
-              <View style={{height: 100}}/>
+              <View style={{height: 50}}/>
               {errortext != '' ? (
                 <Text style={styles.errorTextStyle}> {errortext} </Text>
               ) : null}
               <View style={styles.SectionStyle}>
+                <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
                 <TextInput
                   style={styles.inputStyle}
                   onChangeText={(Email) => setEmail(Email)}
@@ -80,6 +81,7 @@ const HomePage = ({navigation}) => {
                 />
               </View>
               <View style={styles.SectionStyle}>
+                <Image source={require('../resources/icon_password.png')} style={styles.IconImageStyle} />
                 <TextInput
                   style={styles.inputStyle}
                   onChangeText={(UserPassword) => setUserPassword(UserPassword)}
