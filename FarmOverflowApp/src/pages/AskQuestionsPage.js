@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, View} from 'react-native';
+import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, Image} from 'react-native';
 import Loader from './common/Loader';
 import {addNewQuestion} from '../firebase/FarmOverflowApi';
 import {getUser} from '../firebase/AuthenticationApi';
@@ -33,7 +33,9 @@ const AskQuestionsPage = ({route, navigation}) => {
     <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.signedUserTextStyle}> Signed in as user: {getUser(route)} </Text>
+        <Text style={styles.signedUserTextStyle}> 
+          Welcome {getUser(route)} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+        </Text>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
           Ask your question here
         </Text>

@@ -1,24 +1,4 @@
-import { useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-
-export function authorizeUser() {
-    const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
-
-    function onAuthStateChanged(user) {
-        setUser(user);
-        if (initializing) setInitializing(false);
-    }
-
-    useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber;
-    }, []);
-
-    if (initializing) return null;
-
-    return user;
-}
 
 export function createUser(email, password, addCompleteFunc, errorFunc) {
     auth().createUserWithEmailAndPassword(email, password)

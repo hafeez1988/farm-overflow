@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, TouchableOpacity, ImageBackground, Text} from 'react-native';
+import {SafeAreaView, ScrollView, TouchableOpacity, ImageBackground, Text, Image} from 'react-native';
 import {getUser} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
@@ -8,7 +8,9 @@ const MainPage = ({route, navigation}) => {
   return (
     <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
       <SafeAreaView style={styles.container}>
-        <Text style={styles.signedUserTextStyle}> Signed in as user: {getUser(route)} </Text>
+        <Text style={styles.signedUserTextStyle}> 
+          Welcome {getUser(route)} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+        </Text>
         <ScrollView style={styles.scrollView}>
           <TouchableOpacity
             style={styles.buttonStyle}
