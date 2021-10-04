@@ -24,7 +24,7 @@ module.exports = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 30,
         borderColor: '#dadae8',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)'
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
     },
     mainBody: {
         flex: 1,
@@ -77,11 +77,33 @@ module.exports = StyleSheet.create({
         borderWidth: 1,
         padding: 15,
         borderRadius: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)'
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
     signedUserTextStyle: {
         textAlign: 'right',
         fontSize: 10,
         width: '100%',
+    },
+    answerButtonStyle: {
+        borderWidth: 1,
+        backgroundColor: '#B6B6B4',
+        borderColor: '#7DE24E',
+        height: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        width: '50%',
+        alignSelf: 'center',
+    },
+    answerButtonTextStyle: {
+        color: 'black',
+        fontSize: 12,
+    },
+    answerTextArea: {
+        height: '50%', 
+        width: '90%',
+        borderColor: 'gray', 
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
 });

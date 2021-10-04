@@ -34,14 +34,7 @@ class ExploreQuestionsPage extends Component {
   };
 
   renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          backgroundColor: '#CED0CE',
-        }}
-      />
-    );
+    return (<View style={{ height: 1, backgroundColor: '#CED0CE'}}/>);
   };
 
   renderHeader = () => {
@@ -65,11 +58,7 @@ class ExploreQuestionsPage extends Component {
           <ListItem.Subtitle>{`Asked by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
-      <View
-        style={{
-          height: (this.state.expanded === item.key) ? null : 0,
-          overflow: 'hidden',
-        }}>
+      <View style={{height: (this.state.expanded === item.key) ? null : 0, overflow: 'hidden'}}>
         {item.answers.map((value, index) => {
           return (
             <Text key={index} style={{fontSize: 11, paddingBottom: 5, paddingTop: 5, paddingLeft: 20, color: '#34282C'}}>
