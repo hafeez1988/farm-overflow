@@ -35,28 +35,21 @@ export async function getAllQuestions(obj) {
     });
 }
 
-// Updating data
-    /*
-    firestore()
-    .collection('farmoverflow')
-    .doc('8mgWyEL0hRFtm0GXadQk')
-    .update({
-        question: "ssssdsdsdsddsd",
-        answers: ["ohh", "ttt"]
-    })
+export async function addAnswerById(recordId, answer) {
+    console.log(`Adding answer to ${recordId}`);
+    firestore().collection(collectionName).doc(recordId).set(
+        {
+            answers: firestore.FieldValue.arrayUnion(answer),
+        },
+        {merge: true},
+    )
     .then(() => {
-        console.log('User updated!');
+        console.log(`Answer added successfully for ${recordId}`);
+    })
+    .catch(error => {
+        console.error(error);
     });
-    */
-
-    // Reading data
-    /*
-    const farmQuestionCollection = await firestore().collection('farmoverflow').get();
-
-    farmQuestionCollection.forEach(documentSnapshot => {
-        console.log(documentSnapshot);
-    });
-    */
+}
 
     // Delete data
     /*

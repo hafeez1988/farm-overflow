@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, LogBox, TextInput, TouchableOpacity } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
-import { getAllQuestions } from '../firebase/FarmOverflowApi';
+import { getAllQuestions, addAnswerById } from '../firebase/FarmOverflowApi';
 import ToggleBox from 'react-native-togglebox';
 
 const styles = require('../resources/styles');
@@ -59,6 +59,10 @@ class PostAnswerPage extends Component {
     );
   };
 
+  submitAnswer = (recordId) => {
+    addAnswerById(recordId, this.state.farmAnswer.answer);
+  }
+
   renderItem = ({item}) => (
     <View>
       <ListItem key={item.key} onPress={() => this.onChangeLayout(item.key)}            >
@@ -89,7 +93,7 @@ class PostAnswerPage extends Component {
             <TouchableOpacity
               style={styles.answerButtonStyle}
               activeOpacity={0.5}
-              onPress={() => {alert('Answer submitted')}}>
+              onPress={() => {this.submitAnswer(item.key)}}>
               <Text style={styles.answerButtonTextStyle}>Submit</Text>
             </TouchableOpacity>
           </View>
