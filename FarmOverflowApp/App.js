@@ -6,17 +6,17 @@ import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import HomePage from './pages/HomePage';
-import MainPage from './pages/MainPage';
-import UserRegistrationPage from './pages/UserRegistrationPage';
-import AskQuestionsPage from './pages/AskQuestionsPage';
-import PostAnswerPage from './pages/PostAnswerPage';
-import ExploreQuestionsPage from './pages/ExploreQuestionsPage';
+import HomePage from './src/pages/HomePage';
+import MainPage from './src/pages/MainPage';
+import UserRegistrationPage from './src/pages/UserRegistrationPage';
+import AskQuestionsPage from './src/pages/AskQuestionsPage';
+import PostAnswerPage from './src/pages/PostAnswerPage';
+import ExploreQuestionsPage from './src/pages/ExploreQuestionsPage';
 
 const Stack = createStackNavigator();
 const HeaderImage = (
   <Image 
-    source={require('./resources/farmoverflow_logo_black.png')} 
+    source={require('./src/resources/farmoverflow_logo_black.png')} 
     style={{
       width: 250,
       height: 20,
