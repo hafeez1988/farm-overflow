@@ -13,22 +13,25 @@ const MainPage = ({route, navigation}) => {
         </Text>
         <ScrollView style={styles.scrollView}>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.mainmenuButtonStyle}
             activeOpacity={0.5}
             onPress={() => navigation.navigate('AskQuestionsPage', getUser(route))}>
-            <Text style={styles.buttonTextStyle}>ASK A QUESTION</Text>
+            <Image source={require('../resources/icon_questions.png')} style={styles.mainmenuIconImageStyle} />
+            <Text style={styles.mainmenuButtonTextStyle}>ASK A QUESTION</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.mainmenuButtonStyle}
             activeOpacity={0.5}
             onPress={() => navigation.navigate('PostAnswerPage', getUser(route))}>
-            <Text style={styles.buttonTextStyle}>POST ANSWERS</Text>
+            <Image source={require('../resources/icon_answer.png')} style={styles.mainmenuIconImageStyle} />
+            <Text style={styles.mainmenuButtonTextStyle}>POST ANSWERS</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.mainmenuButtonStyle}
             activeOpacity={0.5}
             onPress={() => navigation.navigate('ExploreQuestionsPage', getUser(route))}>
-            <Text style={styles.buttonTextStyle}>EXPLORE</Text>
+            <Image source={require('../resources/icon_explore.png')} style={styles.mainmenuIconImageStyle} />
+            <Text style={styles.mainmenuButtonTextStyle}>EXPLORE</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>

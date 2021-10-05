@@ -115,4 +115,30 @@ module.exports = StyleSheet.create({
         resizeMode : 'stretch',
         alignItems: 'center'
     },
+    mainmenuButtonStyle: {
+        backgroundColor: '#7DE24E',
+        borderWidth: 1,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 150,
+        width: 150,
+        alignItems: 'center',
+        borderRadius: 15,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+    },
+    mainmenuButtonTextStyle: {
+        color: '#023B0E',
+        paddingVertical: 10,
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    mainmenuIconImageStyle: {
+        marginTop: 25,
+        height: 80,
+        width: 80,
+        resizeMode : 'stretch',
+        alignItems: 'center'
+    },
 });
