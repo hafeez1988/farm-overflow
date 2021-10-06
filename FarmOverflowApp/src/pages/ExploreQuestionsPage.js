@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, StyleSheet, Alert } from 'react-native';
+import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, StyleSheet, Alert, Image } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { getQuestionsByUser, deleteById } from '../firebase/FarmOverflowApi';
 import { getLoginUsername } from '../firebase/AuthenticationApi';
+
+const styles = require('../resources/styles');
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -76,7 +78,7 @@ class ExploreQuestionsPage extends Component {
           <ListItem.Subtitle>{`Asked by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
-      <Text style={styles.deleteButtonText} onPress={() => this.showDeleteConfirmAlert(item.key)}>Delete</Text>
+      <Text style={localStyles.deleteButtonText} onPress={() => this.showDeleteConfirmAlert(item.key)}>Delete</Text>
       <View style={{height: (this.state.expanded === item.key) ? null : 0, overflow: 'hidden'}}>
         {item.answers.map((value, index) => {
           return (
@@ -104,6 +106,9 @@ class ExploreQuestionsPage extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
+        <Text style={styles.signedUserTextStyle}> 
+          Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+        </Text>
         <FlatList
           data={this.state.data}
           renderItem={this.renderItem}
@@ -118,7 +123,7 @@ class ExploreQuestionsPage extends Component {
 
 export default ExploreQuestionsPage;
 
-const styles = StyleSheet.create({
+const localStyles = StyleSheet.create({
   deleteButtonText: {
     color: 'red',
     fontSize: 10,

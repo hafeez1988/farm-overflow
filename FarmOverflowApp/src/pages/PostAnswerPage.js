@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, LogBox, TextInput, TouchableOpacity } from 'react-native';
+import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, LogBox, TextInput, TouchableOpacity, Image } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { getAllQuestions, addAnswerById } from '../firebase/FarmOverflowApi';
 import { getLoginUsername } from '../firebase/AuthenticationApi';
@@ -118,6 +118,9 @@ class PostAnswerPage extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
+        <Text style={styles.signedUserTextStyle}> 
+          Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+        </Text>
         <FlatList
           data={this.state.data}
           renderItem={this.renderItem}

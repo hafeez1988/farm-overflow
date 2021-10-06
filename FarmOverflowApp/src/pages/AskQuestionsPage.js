@@ -34,7 +34,7 @@ const AskQuestionsPage = ({route, navigation}) => {
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
         <Text style={styles.signedUserTextStyle}> 
-          Welcome {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+          Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
         </Text>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
           Ask your question here
