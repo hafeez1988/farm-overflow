@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, Image} from 'react-native';
 import Loader from './common/Loader';
 import {addNewQuestion} from '../firebase/FarmOverflowApi';
-import {getUser} from '../firebase/AuthenticationApi';
+import {getLoginUsername} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
@@ -10,7 +10,7 @@ const AskQuestionsPage = ({route, navigation}) => {
   const [loading, setLoading] = useState(false);
 
   const farmQuestion = {
-    user: 'Tester',
+    user: getLoginUsername(),
     question: null
   }
 
@@ -34,7 +34,7 @@ const AskQuestionsPage = ({route, navigation}) => {
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
         <Text style={styles.signedUserTextStyle}> 
-          Welcome {getUser(route)} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+          Welcome {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
         </Text>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
           Ask your question here

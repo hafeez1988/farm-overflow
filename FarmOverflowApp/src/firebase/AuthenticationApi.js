@@ -29,6 +29,10 @@ export function login(email, password, loginFunc, errorFunc) {
     });
 }
 
-export function getUser(route) {
-    return (route && route.params) ? route.params.paramKey : '';
+export function setLoginUsername(email) {
+    global.useremail = email;
+}
+
+export function getLoginUsername() {
+    return global.useremail;
 }

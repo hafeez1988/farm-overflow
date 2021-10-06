@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, StyleSheet, Alert } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { getQuestionsByUser, deleteById } from '../firebase/FarmOverflowApi';
+import { getLoginUsername } from '../firebase/AuthenticationApi';
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ExploreQuestionsPage extends Component {
   }
 
   componentDidMount() {
-    getQuestionsByUser(this, 'Tester');
+    getQuestionsByUser(this, getLoginUsername());
   }
 
   searchFilterFunction = text => {

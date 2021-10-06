@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, LogBox, TextInput, TouchableOpacity } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { getAllQuestions, addAnswerById } from '../firebase/FarmOverflowApi';
+import { getLoginUsername } from '../firebase/AuthenticationApi';
 import ToggleBox from 'react-native-togglebox';
 
 const styles = require('../resources/styles');
@@ -18,7 +19,7 @@ class PostAnswerPage extends Component {
       expanded: false,
       error: null,
       farmAnswer: {
-        user: 'Tester',
+        user: getLoginUsername(),
         answer: null
       }
     };

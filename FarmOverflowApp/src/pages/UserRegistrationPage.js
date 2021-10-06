@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, View, TouchableOpacity, Text, TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import Loader from './common/Loader';
-import {createUser} from '../firebase/AuthenticationApi';
+import {createUser, setLoginUsername} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
@@ -39,7 +39,8 @@ const UserRegistrationPage = ({route, navigation}) => {
 
     try {
       const addCompleteFunc = () => {
-        navigation.navigate('MainPage', {paramKey: email})
+        setLoginUsername(email);
+        navigation.navigate('MainPage')
       }
       const errorFunc = (props) => {
         setLoading(false);

@@ -1,7 +1,7 @@
 import React, {useState, createRef} from 'react';
 import {TextInput, View, Text, ScrollView, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import Loader from './common/Loader';
-import {login} from '../firebase/AuthenticationApi';
+import {login, setLoginUsername} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
@@ -29,7 +29,8 @@ const HomePage = ({navigation}) => {
 
     try {
       const loginFunc = () => {
-        navigation.navigate('MainPage', {paramKey: email})
+        setLoginUsername(email);
+        navigation.navigate('MainPage');
       }
       const errorFunc = () => {
         setLoading(false);
