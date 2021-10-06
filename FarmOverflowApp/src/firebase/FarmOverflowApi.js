@@ -35,6 +35,25 @@ export async function getAllQuestions(obj) {
     });
 }
 
+export async function getQuestionsByUser(obj, createdBy) {
+    console.log(`Retrieving all farming questions added by ${createdBy}`);
+    firestore().collection(collectionName).where('createdBy', '==', createdBy).onSnapshot(querySnapshot => {
+        const questions = [];
+        let number = 0;
+
+        querySnapshot.forEach(documentSnapshot => {
+            questions.push({
+                ...documentSnapshot.data(),
+                key: documentSnapshot.id,
+                index: ++number,
+            });
+        });
+
+        obj.setState({data: questions});
+        obj.arrayholder=questions;
+    });
+}
+
 export async function addAnswerById(recordId, answer) {
     console.log(`Adding answer to ${recordId}`);
     firestore().collection(collectionName).doc(recordId).set(
@@ -51,13 +70,12 @@ export async function addAnswerById(recordId, answer) {
     });
 }
 
-    // Delete data
-    /*
+export async function deleteById(recordId) {
     firestore()
-    .collection('farmoverflow')
-    .doc('8mgWyEL0hRFtm0GXadQk')
-    .delete()
-    .then(() => {
-        console.log('User deleted!');
-    });
-    */
+        .collection(collectionName)
+        .doc(recordId)
+        .delete()
+        .then(() => {
+            console.log(`Farming question ${recordId} was deleted`);
+        });
+}

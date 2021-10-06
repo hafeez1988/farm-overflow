@@ -49,7 +49,7 @@ class PostAnswerPage extends Component {
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="Search Here..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}

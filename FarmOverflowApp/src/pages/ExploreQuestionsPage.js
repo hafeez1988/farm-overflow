@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator, LayoutAnimation, Text } from 'react-native';
+import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, StyleSheet, Alert } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
-import {getAllQuestions} from '../firebase/FarmOverflowApi';
+import { getQuestionsByUser, deleteById } from '../firebase/FarmOverflowApi';
 
 class ExploreQuestionsPage extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class ExploreQuestionsPage extends Component {
   }
 
   componentDidMount() {
-    getAllQuestions(this);
+    getQuestionsByUser(this, 'Tester');
   }
 
   searchFilterFunction = text => {
@@ -33,6 +33,23 @@ class ExploreQuestionsPage extends Component {
     this.setState({data: newData});
   };
 
+  showDeleteConfirmAlert = (recordId) => {
+    Alert.alert(
+      "Delete Question?",
+      "Do you really want to delete this question?",
+      [
+        {
+          text: "Yes",
+          onPress: () => deleteById(recordId),
+        },
+        {
+          text: "No",
+          cancelable: true,
+        }
+      ],
+    );
+  };
+
   renderSeparator = () => {
     return (<View style={{ height: 1, backgroundColor: '#CED0CE'}}/>);
   };
@@ -40,7 +57,7 @@ class ExploreQuestionsPage extends Component {
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="Search Here..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
@@ -58,6 +75,7 @@ class ExploreQuestionsPage extends Component {
           <ListItem.Subtitle>{`Asked by ${item.createdBy} on ${item.createdAt.toDate()}`}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
+      <Text style={styles.deleteButtonText} onPress={() => this.showDeleteConfirmAlert(item.key)}>Delete</Text>
       <View style={{height: (this.state.expanded === item.key) ? null : 0, overflow: 'hidden'}}>
         {item.answers.map((value, index) => {
           return (
@@ -98,3 +116,13 @@ class ExploreQuestionsPage extends Component {
 }
 
 export default ExploreQuestionsPage;
+
+const styles = StyleSheet.create({
+  deleteButtonText: {
+    color: 'red',
+    fontSize: 10,
+    textAlign: 'right',
+    padding: 10,
+    backgroundColor: 'white',
+  },
+});
