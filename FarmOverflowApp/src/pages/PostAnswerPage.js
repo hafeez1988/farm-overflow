@@ -123,7 +123,7 @@ class PostAnswerPage extends Component {
           <Text style={styles.signedUserTextStyle}> 
             Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
           </Text>
-          <Text onPress={() => {logout(this.state.navigation)}}>
+          <Text onPress={() => {logout(this.state.navigation)}} style={styles.logoutUserTextStyle}>
             Logout
           </Text>
         </View>

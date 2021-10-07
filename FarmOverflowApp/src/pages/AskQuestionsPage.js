@@ -37,7 +37,7 @@ const AskQuestionsPage = ({route, navigation}) => {
           <Text style={styles.signedUserTextStyle}> 
             Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
           </Text>
-          <Text onPress={() => {logout(navigation)}}>
+          <Text onPress={() => {logout(navigation)}} style={styles.logoutUserTextStyle}>
             Logout
           </Text>
         </View>

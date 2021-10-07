@@ -84,6 +84,14 @@ module.exports = StyleSheet.create({
         textAlign: 'right',
         fontSize: 10,
         width: '70%',
+        height: 60,
+    },
+    logoutUserTextStyle: {
+        textAlign: 'left',
+        fontSize: 8,
+        width: '30%',
+        height: 60,
+        paddingTop: 15
     },
     answerButtonStyle: {
         borderWidth: 1,

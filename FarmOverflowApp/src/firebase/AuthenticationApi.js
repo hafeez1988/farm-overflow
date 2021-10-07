@@ -40,7 +40,7 @@ export function getLoginUsername() {
 
 export function logout(navigation) {
     Alert.alert(
-        "Logout",
+        "Logout FARM Overflow",
         "Do you really want to logout?",
         [
             {

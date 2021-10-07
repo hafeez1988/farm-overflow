@@ -8,11 +8,11 @@ const MainPage = ({route, navigation}) => {
   return (
     <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
       <SafeAreaView style={styles.container}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end'}}>
           <Text style={styles.signedUserTextStyle}> 
             Welcome {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
           </Text>
-          <Text onPress={() => {logout(navigation)}}>
+          <Text onPress={() => {logout(navigation)}} style={styles.logoutUserTextStyle}>
             Logout
           </Text>
         </View>
