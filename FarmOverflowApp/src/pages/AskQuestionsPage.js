@@ -15,7 +15,8 @@ const AskQuestionsPage = ({route, navigation}) => {
   }
 
   const addCompleteFunc = () => {
-    console.log('This is inside the caller function');
+    console.log('Question submitted successfully!');
+    alert('Your question has been submitted');
   }
 
   const handleSubmitPress = () => {
@@ -42,13 +43,13 @@ const AskQuestionsPage = ({route, navigation}) => {
           </Text>
         </View>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
-          Ask your question here
+          Ask your question
         </Text>
         <ScrollView style={styles.scrollView}>
           <TextInput
             style={styles.textArea}
             underlineColorAndroid="transparent"
-            placeholder="Type something ...."
+            placeholder="Type your question here ...."
             placeholderTextColor="grey"
             numberOfLines={10}
             multiline={true}

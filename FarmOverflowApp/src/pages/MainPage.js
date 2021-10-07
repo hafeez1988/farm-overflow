@@ -36,7 +36,7 @@ const MainPage = ({route, navigation}) => {
             activeOpacity={0.5}
             onPress={() => navigation.navigate('ExploreQuestionsPage')}>
             <Image source={require('../resources/icon_explore.png')} style={styles.mainmenuIconImageStyle} />
-            <Text style={styles.mainmenuButtonTextStyle}>EXPLORE</Text>
+            <Text style={styles.mainmenuButtonTextStyle}>MY QUESTIONS</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
