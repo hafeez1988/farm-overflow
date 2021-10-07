@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, FlatList, ActivityIndicator, LayoutAnimation, Text, LogBox, TextInput, TouchableOpacity, Image } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { getAllQuestions, addAnswerById } from '../firebase/FarmOverflowApi';
-import { getLoginUsername } from '../firebase/AuthenticationApi';
+import { getLoginUsername, logout } from '../firebase/AuthenticationApi';
 import ToggleBox from 'react-native-togglebox';
 
 const styles = require('../resources/styles');
@@ -18,6 +18,7 @@ class PostAnswerPage extends Component {
       data: [],
       expanded: false,
       error: null,
+      navigation: props.navigation,
       farmAnswer: {
         user: getLoginUsername(),
         answer: null
@@ -118,9 +119,14 @@ class PostAnswerPage extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        <Text style={styles.signedUserTextStyle}> 
-          Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
-        </Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={styles.signedUserTextStyle}> 
+            Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+          </Text>
+          <Text onPress={() => {logout(this.state.navigation)}}>
+            Logout
+          </Text>
+        </View>
         <FlatList
           data={this.state.data}
           renderItem={this.renderItem}

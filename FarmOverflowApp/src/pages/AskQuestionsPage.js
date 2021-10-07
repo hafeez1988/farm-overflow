@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, Image} from 'react-native';
+import {SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, Image, View} from 'react-native';
 import Loader from './common/Loader';
 import {addNewQuestion} from '../firebase/FarmOverflowApi';
-import {getLoginUsername} from '../firebase/AuthenticationApi';
+import {getLoginUsername, logout} from '../firebase/AuthenticationApi';
 
 const styles = require('../resources/styles');
 
@@ -33,9 +33,14 @@ const AskQuestionsPage = ({route, navigation}) => {
     <ImageBackground source={require('../resources/screen_background.jpg')} resizeMode="cover" style={{flex:1, justifyContent:"center"}}>
       <Loader loading={loading} />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.signedUserTextStyle}> 
-          Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
-        </Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={styles.signedUserTextStyle}> 
+            Logged-in as {getLoginUsername()} <Image source={require('../resources/icon_person.png')} style={styles.IconImageStyle} />
+          </Text>
+          <Text onPress={() => {logout(navigation)}}>
+            Logout
+          </Text>
+        </View>
         <Text style={{textAlign: 'left', alignSelf: 'stretch', fontSize: 12}}>
           Ask your question here
         </Text>

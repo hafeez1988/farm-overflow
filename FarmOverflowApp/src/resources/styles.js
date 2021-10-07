@@ -83,7 +83,7 @@ module.exports = StyleSheet.create({
     signedUserTextStyle: {
         textAlign: 'right',
         fontSize: 10,
-        width: '100%',
+        width: '70%',
     },
     answerButtonStyle: {
         borderWidth: 1,

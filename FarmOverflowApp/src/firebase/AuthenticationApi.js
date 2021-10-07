@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import {Alert} from 'react-native';
 
 export function createUser(email, password, addCompleteFunc, errorFunc) {
     auth().createUserWithEmailAndPassword(email, password)
@@ -35,4 +36,27 @@ export function setLoginUsername(email) {
 
 export function getLoginUsername() {
     return global.useremail;
+}
+
+export function logout(navigation) {
+    Alert.alert(
+        "Logout",
+        "Do you really want to logout?",
+        [
+            {
+                text: "Yes",
+                onPress: () => {
+                    auth().signOut().then(() => {
+                        console.log('User logged-out successfully!');
+                        setLoginUsername(null);
+                        navigation.reset({index: 0, routes: [{ name: 'HomePage' }]})
+                    });
+                },
+            },
+            {
+                text: "No",
+                cancelable: true,
+            }
+        ],
+    );
 }
